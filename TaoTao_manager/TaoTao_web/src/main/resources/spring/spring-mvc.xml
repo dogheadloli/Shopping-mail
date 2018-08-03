@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+
+
+    <!--注解扫描器-->
+    <dubbo:annotation package="controller"/>
+    <!-- 配置注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--配置Dubbo的应用名称-->
+    <dubbo:application name="dubbo-2"/>
+    <!--配置注册中心的地址-->
+    <dubbo:registry address="zookeeper://120.78.88.198:2181"/>
+
+</beans>
