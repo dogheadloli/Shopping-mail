@@ -14,8 +14,8 @@
     <modules>
         <module>TaoTao_pojo</module>
         <module>TaoTao_mapper</module>
-        <module>TaoTao_service</module>
         <module>TaoTao_web</module>
+        <module>TaoTao_service2</module>
     </modules>
 
     <dependencies>

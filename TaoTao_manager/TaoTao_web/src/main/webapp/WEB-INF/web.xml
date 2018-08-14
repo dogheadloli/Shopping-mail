@@ -14,6 +14,15 @@
         <welcome-file>default.jsp</welcome-file>
     </welcome-file-list>
 
+    <!-- 加载spring容器 -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath*:spring/applicationContext-*.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+
     <!-- 解决post乱码 -->
     <filter>
         <filter-name>CharacterEncodingFilter</filter-name>
@@ -35,13 +44,13 @@
         <!-- 设置springmvc配置文件路径 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath*:spring/spring-mvc.xml</param-value>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>*.form</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!--设置session无操作5分钟后销毁-->
