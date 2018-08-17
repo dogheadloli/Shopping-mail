@@ -1,6 +1,8 @@
 package service;
 
 import po.TbItem;
+import pojo.DataGridResult;
+import utils.TaotaoResult;
 
 /**
  * 2 * @Author: 睿
@@ -9,4 +11,8 @@ import po.TbItem;
  */
 public interface ItemService {
     TbItem getItemById(long itemId);
+
+    DataGridResult getItemList(int page,int rows);
+
+    TaotaoResult createItem(TbItem item,String desc,String itemParam) throws Exception;
 }
