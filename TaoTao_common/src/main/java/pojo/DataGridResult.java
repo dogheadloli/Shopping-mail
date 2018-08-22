@@ -1,5 +1,6 @@
 package pojo;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -7,7 +8,7 @@ import java.util.List;
  * 3 * @Date: 2018/8/14 0014 11:11
  * 4
  */
-public class DataGridResult {
+public class DataGridResult implements Serializable {
     private int total;
     private List<?> rows;
 

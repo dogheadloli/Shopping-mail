@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ExternalStorageConfigurationManager" enabled="true" />
+  <component name="FUSUsageTrigger">
+    <session id="-447903747">
+      <usages-collector id="statistics.spring.core.usages.trigger">
+        <counts>
+          <entry key="fixes.SpringFacetInspection.AddFacetFix" value="1" />
+        </counts>
+      </usages-collector>
+    </session>
+  </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_content/TaoTao_content_service" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager/TaoTao_service" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager/TaoTao_web" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager_web" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_portal" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_portal_web" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_rest" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_service" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/TaoTao_portal_web/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/TaoTao_manager/TaoTao_interface/pom.xml" />
-        <option value="$PROJECT_DIR$/TaoTao_manager/TaoTao_service/pom.xml" />
+        <option value="$PROJECT_DIR$/TaoTao_content/pom.xml" />
+        <option value="$PROJECT_DIR$/TaoTao_manager/TaoTao_web/pom.xml" />
+        <option value="$PROJECT_DIR$/TaoTao_portal/pom.xml" />
+        <option value="$PROJECT_DIR$/TaoTao_service/pom.xml" />
       </set>
     </option>
   </component>

@@ -11,6 +11,10 @@
     <modules>
         <module>TaoTao_common</module>
         <module>TaoTao_manager</module>
+        <module>TaoTao_rest</module>
+        <module>TaoTao_manager_web</module>
+        <module>TaoTao_portal_web</module>
+        <module>TaoTao_content</module>
     </modules>
 
     <properties>
