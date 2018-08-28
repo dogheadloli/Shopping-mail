@@ -29,7 +29,6 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
     <dubbo:service interface="service.ItemCatService" ref="itemCatServiceImpl"/>
     <dubbo:service interface="service.ItemParamItemService" ref="itemParamItemServiceImpl"/>
     <dubbo:service interface="service.ItemParamService" ref="itemParamServiceImpl"/>
-    <dubbo:service interface="service.PictureService" ref="pictureServiceImpl"/>
 
     <!-- 事务管理器 -->
     <bean id="transactionManager"

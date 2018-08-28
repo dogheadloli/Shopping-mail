@@ -4,14 +4,17 @@
        xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd
-http://code.alibabatech.com/schema/dubbo
-http://code.alibabatech.com/schema/dubbo/dubbo.xsd
-http://www.springframework.org/schema/mvc
-http://www.springframework.org/schema/mvc/spring-mvc.xsd
-http://www.springframework.org/schema/context
-http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
 
+
+    <!--加载属性文件-->
+    <context:property-placeholder location="classpath:properties/resources.properties"/>
 
     <!--视图解析器 解析jstl,可以配置路径的的前缀和后缀-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -41,9 +44,8 @@ http://www.springframework.org/schema/context/spring-context.xsd">
     <dubbo:reference interface="service.ItemCatService" id="itemCatServiceImpl"/>
     <dubbo:reference interface="service.ItemParamItemService" id="itemParamItemServiceImpl"/>
     <dubbo:reference interface="service.ItemParamService" id="itemParamServiceImpl"/>
-    <dubbo:reference interface="service.PictureService" id="pictureServiceImpl"/>
     <dubbo:reference interface="service.ContentCategoryService" id="contentCategoryServiceImpl"/>
-
+    <dubbo:reference interface="service.ContentService" id="contentServiceImpl"/>
     <!--文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--设置上传文件的最大尺寸为5M-->
@@ -51,5 +53,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
             <value>5242880</value>
         </property>
     </bean>
+
 
 </beans>

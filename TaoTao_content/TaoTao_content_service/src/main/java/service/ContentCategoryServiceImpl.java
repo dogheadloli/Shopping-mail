@@ -55,6 +55,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         return TaotaoResult.ok(contentCategory);
     }
 
+    //修改
     @Override
     public TaotaoResult updateContentCategory(Long id, String name) {
         //创建对象
@@ -68,6 +69,7 @@ public class ContentCategoryServiceImpl implements ContentCategoryService {
         return TaotaoResult.ok();
     }
 
+    //删除
     @Override
     public TaotaoResult deleteContentCategory(Long id) {
         TbContentCategory contentCategory = contentCategoryMapper.selectByPrimaryKey(id);
