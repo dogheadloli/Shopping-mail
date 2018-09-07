@@ -1,6 +1,10 @@
 package service;
 
+import po.TbContent;
 import pojo.DataGridResult;
+import utils.TaotaoResult;
+
+import java.util.List;
 
 
 /**
@@ -11,4 +15,9 @@ import pojo.DataGridResult;
 public interface ContentService {
 
     DataGridResult getContentList(Long id, Integer page, Integer rows);
+
+    TaotaoResult addContent(TbContent content);
+
+    List<TbContent> getContentByCid(long cid);
+
 }

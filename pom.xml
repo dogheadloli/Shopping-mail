@@ -11,10 +11,11 @@
     <modules>
         <module>TaoTao_common</module>
         <module>TaoTao_manager</module>
-        <module>TaoTao_rest</module>
         <module>TaoTao_manager_web</module>
         <module>TaoTao_portal_web</module>
         <module>TaoTao_content</module>
+        <module>TaoTao_search</module>
+        <module>TaoTao_search_web</module>
     </modules>
 
     <properties>
@@ -230,7 +231,7 @@
             <dependency>
                 <groupId>org.apache.solr</groupId>
                 <artifactId>solr-solrj</artifactId>
-                <version>7.3.0</version>
+                <version>4.10.2</version>
             </dependency>
             <!--dubbo-->
             <dependency>

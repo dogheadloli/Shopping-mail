@@ -46,6 +46,7 @@
     <dubbo:reference interface="service.ItemParamService" id="itemParamServiceImpl"/>
     <dubbo:reference interface="service.ContentCategoryService" id="contentCategoryServiceImpl"/>
     <dubbo:reference interface="service.ContentService" id="contentServiceImpl"/>
+    <dubbo:reference interface="service.SearchItemService" id="searchItemSerivceImpl"/>
     <!--文件上传-->
     <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <!--设置上传文件的最大尺寸为5M-->

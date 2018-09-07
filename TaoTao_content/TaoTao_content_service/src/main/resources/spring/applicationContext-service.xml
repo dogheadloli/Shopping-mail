@@ -19,7 +19,7 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
     <context:component-scan base-package="service"/>
 
     <!--Dubbo应用名称，通常用项目名-->
-    <dubbo:application name="TaoTao_manager"/>
+    <dubbo:application name="TaoTao_content"/>
     <!--配置Dubbo注册中心的地址-->
     <dubbo:registry address="zookeeper://120.78.88.198:2181"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
