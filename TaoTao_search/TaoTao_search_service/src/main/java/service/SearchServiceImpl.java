@@ -23,9 +23,13 @@ public class SearchServiceImpl implements SearchService {
         //根据跳进拼装一个查询对象
         solrQuery.setQuery(queryString);
         //设置分页
-        if (page < 1) page = 1;
+        if (page < 1) {
+            page = 1;
+        }
         solrQuery.setStart((page - 1) * rows);
-        if (rows < 1) rows = 10;
+        if (rows < 1) {
+            rows = 10;
+        }
         solrQuery.setRows(rows);
         //设置搜索域
         solrQuery.set("df", "item_title");
@@ -34,7 +38,7 @@ public class SearchServiceImpl implements SearchService {
         solrQuery.addHighlightField("item_title");
         solrQuery.setHighlightSimplePre("<font color='red'>");
         solrQuery.setHighlightSimplePost("</font>");
-        //盗用dao
+        //调用dao
         SearchResult searchResult = searchDao.search(solrQuery);
         //计算总页数
         long recordCount = searchResult.getRecordCount();

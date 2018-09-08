@@ -1,7 +1,7 @@
 package dao;
 
 import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
 import org.apache.solr.common.SolrDocumentList;
@@ -23,11 +23,11 @@ import java.util.Map;
 public class SearchDao {
 
     @Autowired
-    private SolrServer solrServer;
+    private HttpSolrClient httpSolrClient;
 
     public SearchResult search(SolrQuery query) throws Exception {
         //查询
-        QueryResponse response = solrServer.query(query);
+        QueryResponse response = httpSolrClient.query(query);
         //取结果
         SolrDocumentList solrDocumentList = response.getResults();
         //总记录数

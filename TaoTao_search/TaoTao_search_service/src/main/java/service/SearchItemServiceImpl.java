@@ -2,7 +2,7 @@ package service;
 
 
 import mapper.SearchItemMapper;
-import org.apache.solr.client.solrj.SolrServer;
+import org.apache.solr.client.solrj.impl.HttpSolrClient;
 import org.apache.solr.common.SolrInputDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,7 +22,7 @@ public class SearchItemServiceImpl implements SearchItemService {
     @Autowired
     SearchItemMapper searchItemMapper;
     @Autowired
-    private SolrServer solrServer;
+    private HttpSolrClient httpSolrClient;
 
     @Override
     public TaotaoResult importItemsToIndex() {
@@ -39,9 +39,9 @@ public class SearchItemServiceImpl implements SearchItemService {
                 document.addField("item_image", searchItem.getImage());
                 document.addField("item_category_name", searchItem.getCategory_name());
                 document.addField("item_desc", searchItem.getItem_desc());
-                solrServer.add(document);
+                httpSolrClient.add(document);
                 //提交
-                solrServer.commit();
+                httpSolrClient.commit();
             }
         } catch (Exception e) {
             return TaotaoResult.build(500, "失败");
