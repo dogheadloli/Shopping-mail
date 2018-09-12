@@ -23,6 +23,15 @@
     </properties>
 
     <dependencies>
+        <!--activemq的jar包-->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>activemq-all</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jms</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.rui</groupId>
             <artifactId>TaoTao_mapper</artifactId>

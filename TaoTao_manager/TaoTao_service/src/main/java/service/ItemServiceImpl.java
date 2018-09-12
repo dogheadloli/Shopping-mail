@@ -6,11 +6,16 @@ import mapper.TbItemDescMapper;
 import mapper.TbItemMapper;
 import mapper.TbItemParamItemMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import po.*;
 import pojo.DataGridResult;
 import utils.IDUtils;
 import utils.TaotaoResult;
+
+import javax.annotation.Resource;
+import javax.jms.*;
 
 import java.util.Date;
 import java.util.List;
@@ -29,6 +34,10 @@ public class ItemServiceImpl implements ItemService {
     private TbItemDescMapper tbItemDescMapper;
     @Autowired
     private TbItemParamItemMapper itemParamItemMapper;
+    @Autowired
+    private JmsTemplate jmsTemplate;
+    @Resource(name = "itemAddTopic")
+    private Destination destination;
 
     @Override
     public TbItem getItemById(long itemId) {
@@ -79,6 +88,14 @@ public class ItemServiceImpl implements ItemService {
         if (result.getStatus() != 200) {
             throw new Exception();
         }
+
+        jmsTemplate.send(destination, new MessageCreator() {
+            @Override
+            public Message createMessage(Session session) throws JMSException {
+                TextMessage message = session.createTextMessage(itemId + "");
+                return message;
+            }
+        });
 
         return TaotaoResult.ok();
     }

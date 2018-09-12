@@ -7,15 +7,15 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:annotation-config/>
-    <!-- &lt;!&ndash;redis单机版&ndash;&gt;
+     <!--redis单机版-->
      <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
          <constructor-arg name="host" value="120.78.88.198"/>
          <constructor-arg name="port" value="6379"/>
      </bean>
 
-     <bean id="jedisClientPool" class="jedis.JedisClientPool"/>-->
+     <bean id="jedisClientPool" class="jedis.JedisClientPool"/>
 
-    <!--redis集群版-->
+    <!--&lt;!&ndash;redis集群版&ndash;&gt;
     <bean id="jedisCluster" class="redis.clients.jedis.JedisCluster">
         <constructor-arg>
             <set>
@@ -47,6 +47,6 @@ http://www.springframework.org/schema/context/spring-context.xsd">
         </constructor-arg>
     </bean>
 
-    <bean id="jedisClientCluster" class="jedis.JedisClientCluster"/>
+    <bean id="jedisClientCluster" class="jedis.JedisClientCluster"/>-->
 
 </beans>

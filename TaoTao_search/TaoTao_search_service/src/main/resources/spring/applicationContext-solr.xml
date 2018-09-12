@@ -3,25 +3,20 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="emptyBuilder" class="org.apache.solr.client.solrj.impl.CloudSolrClient.Builder"/>
-
-    <bean factory-bean="emptyBuilder" factory-method="withZkHost" id="builder">
-        <constructor-arg value="120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184" type="java.lang.String"/>
+    <!-- 单机版solr的连接 -->
+    <bean id="httpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrClient">
+        <constructor-arg name="builder" value="http://120.78.88.198:8080/solr/new_core"/>
     </bean>
 
-    <bean factory-bean="builder" factory-method="build" id="solrClient">
-        <property name="defaultCollection" value="collection2"/>
-    </bean>
+    <!--<bean id="cloudSolrBuilder" class="org.apache.solr.client.solrj.impl.CloudSolrClient.Builder"/>
 
-    <bean id="cloudSolrBuilder" class="org.apache.solr.client.solrj.impl.CloudSolrClient.Builder"/>
-
-    <bean id="builder" factory-bean="cloudSolrBuilder" factory-method="withZkHost">
+    <bean id="builder2" factory-bean="cloudSolrBuilder" factory-method="withZkHost">
         <constructor-arg type="java.lang.String"
                          value="120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184"/>
     </bean>
 
-    <bean id="cloudSolrClient" factory-bean="builder" factory-method="build">
+    <bean id="cloudSolrClient" factory-bean="builder2" factory-method="build">
         <property name="defaultCollection" value="collection"/>
-    </bean>
+    </bean>-->
 
 </beans>
