@@ -1,0 +1,41 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://code.alibabatech.com/schema/dubbo
+http://code.alibabatech.com/schema/dubbo/dubbo.xsd
+http://www.springframework.org/schema/mvc
+http://www.springframework.org/schema/mvc/spring-mvc.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:properties/*.properties"/>
+
+    <!--视图解析器 解析jstl,可以配置路径的的前缀和后缀-->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    </bean>
+
+
+    <!-- 配置包扫描器,扫描controller -->
+    <context:component-scan base-package="controller"/>
+
+
+    <!-- 配置注解驱动-->
+    <mvc:annotation-driven/>
+
+    <!--配置Dubbo的应用名称-->
+    <dubbo:application name="TaoTao_item_web"/>
+    <!--配置注册中心的地址-->
+    <dubbo:registry address="zookeeper://120.78.88.198:2181" timeout="30000"/>
+
+    <dubbo:reference interface="service.ItemService" id="itemServiceImpl"/>
+
+
+</beans>

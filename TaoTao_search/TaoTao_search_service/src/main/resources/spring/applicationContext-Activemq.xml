@@ -25,7 +25,7 @@
 
     <!--消息接收者consumer-->
     <!--配置监听器-->
-    <bean id="myMessageListener" class="listener.MyMessageListener"/>
+    <bean id="myMessageListener" class="listener.ItemAddMessageListener"/>
     <!--消息监听容器-->
     <bean class="org.springframework.jms.listener.DefaultMessageListenerContainer">
         <property name="connectionFactory" ref="connectionFactory"/>

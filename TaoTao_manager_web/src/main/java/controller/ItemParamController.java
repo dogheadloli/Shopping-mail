@@ -12,7 +12,7 @@ import utils.TaotaoResult;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/16 0016 17:09
- * 4
+ * 4    商品参数模板
  */
 @Controller
 @RequestMapping("/item/param")

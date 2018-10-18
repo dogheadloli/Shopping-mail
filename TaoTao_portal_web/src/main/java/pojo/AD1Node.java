@@ -3,7 +3,7 @@ package pojo;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/29 0029 20:22
- * 4
+ * 4    广告图片
  */
 public class AD1Node {
     private String srcB;

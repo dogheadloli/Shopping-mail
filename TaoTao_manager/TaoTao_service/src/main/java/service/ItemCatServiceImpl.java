@@ -15,7 +15,7 @@ import java.util.List;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/14 0014 15:26
- * 4    商品类型展示
+ * 4    商品分类展示
  */
 @Service
 public class ItemCatServiceImpl implements ItemCatService {
@@ -23,6 +23,7 @@ public class ItemCatServiceImpl implements ItemCatService {
     private TbItemCatMapper itemCatMapper;
 
     @Override
+    //根据parentId查询子类
     public List<TbItemCat> getItemCatList(Long parentId) {
 
         TbItemCatExample example = new TbItemCatExample();

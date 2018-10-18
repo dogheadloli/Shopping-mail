@@ -16,6 +16,12 @@
         <module>TaoTao_content</module>
         <module>TaoTao_search</module>
         <module>TaoTao_search_web</module>
+        <module>TaoTao_item_web</module>
+        <module>TaoTao_sso</module>
+        <module>TaoTao_sso_web</module>
+        <module>TaoTao_cart_web</module>
+        <module>TaoTao_order</module>
+        <module>TaoTao_order_web</module>
     </modules>
 
     <properties>
@@ -301,6 +307,13 @@
                 <artifactId>spring-jms</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <!--freemarker-->
+            <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.23</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

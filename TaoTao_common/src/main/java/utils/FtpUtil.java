@@ -1,8 +1,6 @@
 package utils;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -146,13 +144,4 @@ public class FtpUtil {
         return result;
     }
 
-    public static void main(String[] args) {
-        try {
-            FileInputStream in = new FileInputStream(new File("D:\\temp\\image\\gaigeming.jpg"));
-            boolean flag = uploadFile("192.168.25.133", 21, "ftpuser", "ftpuser", "/home/ftpuser/www/images", "/2015/01/21", "gaigeming.jpg", in);
-            System.out.println(flag);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
 }

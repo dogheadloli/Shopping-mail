@@ -1,5 +1,4 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -43,12 +42,12 @@
             <c:forEach items="${itemList}" var="item">
                 <li class="item-book" bookid="11078102">
                     <div class="p-img">
-                        <a target="_blank" href="/item/${item.id }.html">
+                        <a target="_blank" href="http://localhost:8086/item/${item.id }.html">
                             <img width="160" height="160" data-img="1" data-lazyload="${item.image}"/>
                         </a>
                     </div>
                     <div class="p-name">
-                        <a target="_blank" href="/item/${item.id }.html">
+                        <a target="_blank" href="http://localhost:8086/item/${item.id }.html">
                                 ${item.title}
                         </a>
                     </div>

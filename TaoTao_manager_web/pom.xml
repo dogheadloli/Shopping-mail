@@ -30,11 +30,6 @@
         </dependency>
         <dependency>
             <groupId>com.rui</groupId>
-            <artifactId>TaoTao_mapper</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>com.rui</groupId>
             <artifactId>TaoTao_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
@@ -90,16 +85,6 @@
             <groupId>javax.servlet</groupId>
             <artifactId>jsp-api</artifactId>
             <scope>provided</scope>
-        </dependency>
-        <!--redis-->
-        <dependency>
-            <groupId>redis.clients</groupId>
-            <artifactId>jedis</artifactId>
-        </dependency>
-        <!--solr-->
-        <dependency>
-            <groupId>org.apache.solr</groupId>
-            <artifactId>solr-solrj</artifactId>
         </dependency>
         <!--dubbo-->
         <dependency>

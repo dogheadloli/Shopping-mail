@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/9/8 0008 20:38
- * 4
+ * 4    全局异常处理器
  */
 public class GlobelExceptionResolver implements HandlerExceptionResolver {
 

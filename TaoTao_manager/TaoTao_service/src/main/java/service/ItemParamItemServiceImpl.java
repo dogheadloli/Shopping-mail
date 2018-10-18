@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/20 0020 17:51
- * 4    商品规格参数展示
+ * 4    商品规格参数详情展示
  */
 @Service
 public class ItemParamItemServiceImpl implements ItemParamItemService {

@@ -10,7 +10,7 @@ import utils.TaotaoResult;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/9/4 0004 21:00
- * 4
+ * 4    商品数据导入solr
  */
 @Controller
 public class IndexManagerController {

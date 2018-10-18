@@ -14,7 +14,7 @@
 
 
     <!--加载属性文件-->
-    <context:property-placeholder location="classpath:properties/resources.properties"/>
+    <context:property-placeholder location="classpath:properties/resources.properties" ignore-unresolvable="true"/>
 
     <!--视图解析器 解析jstl,可以配置路径的的前缀和后缀-->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">

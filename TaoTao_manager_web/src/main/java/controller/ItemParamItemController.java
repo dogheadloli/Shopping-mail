@@ -10,7 +10,7 @@ import service.ItemParamItemService;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/16 0016 22:42
- * 4
+ * 4    商品参数
  */
 @Controller
 public class ItemParamItemController {

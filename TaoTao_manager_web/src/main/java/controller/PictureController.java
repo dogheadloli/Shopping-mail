@@ -17,7 +17,7 @@ import java.util.Map;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/15 0015 9:28
- * 4
+ * 4    图片上传
  */
 @Controller
 @RequestMapping("/pic")

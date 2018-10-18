@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/21 0021 19:42
- * 4    内容分类
+ * 4    内容广告分类查询
  */
 @Service
 public class ContentCategoryServiceImpl implements ContentCategoryService {

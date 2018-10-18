@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/8/28 0028 18:36
- * 4    内容查询
+ * 4    商品
  */
 @Service
 public class ContentServiceImpl implements ContentService {
@@ -32,6 +32,7 @@ public class ContentServiceImpl implements ContentService {
     private String INDEX_CONTENT;
 
     @Override
+    //查询
     public DataGridResult getContentList(Long id, Integer page, Integer rows) {
         TbContentExample contentExample = new TbContentExample();
         TbContentExample.Criteria criteria = contentExample.createCriteria();
@@ -48,6 +49,7 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
+    //添加
     public TaotaoResult addContent(TbContent content) {
         //补全pojo
         content.setCreated(new Date());
@@ -60,6 +62,7 @@ public class ContentServiceImpl implements ContentService {
     }
 
     @Override
+    //根据id查询
     public List<TbContent> getContentByCid(long cid) {
         //先查询缓存里有没有
         try {
@@ -69,7 +72,6 @@ public class ContentServiceImpl implements ContentService {
                 return list;
             }
         } catch (Exception e) {
-
         }
         //缓存中没有，查数据库
         TbContentExample example = new TbContentExample();
@@ -80,7 +82,6 @@ public class ContentServiceImpl implements ContentService {
         try {
             jedisClient.hset(INDEX_CONTENT, cid + "", JsonUtils.objectToJson(list));
         } catch (Exception e) {
-
         }
         return list;
     }

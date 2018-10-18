@@ -21,6 +21,7 @@ public class ItemParamServiceImpl implements ItemParamService {
     private TbItemParamMapper tbItemParamMapper;
 
     @Override
+    //查询模板
     public TaotaoResult getItemParamByCid(Long cid) {
         TbItemParamExample tbItemParamExample = new TbItemParamExample();
         TbItemParamExample.Criteria criteria = tbItemParamExample.createCriteria();
@@ -35,6 +36,7 @@ public class ItemParamServiceImpl implements ItemParamService {
     }
 
     @Override
+    //添加模板
     public TaotaoResult insertItemParamt(TbItemParam itemParam) {
         //补全pojo
         itemParam.setCreated(new Date());

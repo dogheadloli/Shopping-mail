@@ -9,7 +9,7 @@ import pojo.SearchResult;
 /**
  * 2 * @Author: 睿
  * 3 * @Date: 2018/9/5 0005 21:04
- * 4
+ * 4    商品查询
  */
 @Service
 public class SearchServiceImpl implements SearchService {

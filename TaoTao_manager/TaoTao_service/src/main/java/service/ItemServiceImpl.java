@@ -2,16 +2,20 @@ package service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import jedis.JedisClient;
 import mapper.TbItemDescMapper;
 import mapper.TbItemMapper;
 import mapper.TbItemParamItemMapper;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
 import po.*;
 import pojo.DataGridResult;
 import utils.IDUtils;
+import utils.JsonUtils;
 import utils.TaotaoResult;
 
 import javax.annotation.Resource;
@@ -38,21 +42,42 @@ public class ItemServiceImpl implements ItemService {
     private JmsTemplate jmsTemplate;
     @Resource(name = "itemAddTopic")
     private Destination destination;
+    @Autowired
+    private JedisClient jedisClient;
+    @Value("${ITEM_INFO}")
+    private String ITEM_INFO;
+    @Value("${TIME_EXPIRE}")
+    private Integer TIME_EXPIRE;
 
     @Override
+    //查询商品
     public TbItem getItemById(long itemId) {
-
-        TbItemExample tbItemExample = new TbItemExample();
-        TbItemExample.Criteria criteria = tbItemExample.createCriteria();
-        criteria.andIdEqualTo(itemId);
-        List<TbItem> list = tbItemMapper.selectByExample(tbItemExample);
-        if (list != null && list.size() > 0) {
-            return list.get(0);
+        //先查询缓存
+        try {
+            String json = jedisClient.get(ITEM_INFO + ":" + itemId + ":" + "BASE");
+            if (StringUtils.isNotBlank(json)) {
+                TbItem item = JsonUtils.jsonToPojo(json, TbItem.class);
+                return item;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
+        //缓存中没有，查询数据库
+        TbItem item = tbItemMapper.selectByPrimaryKey(itemId);
+        //添加到换缓存
+        try {
+            //添加到缓存
+            jedisClient.set(ITEM_INFO + ":" + itemId + ":" + "BASE", JsonUtils.objectToJson(item));
+            //设置过期时间，提高利用率
+            jedisClient.expire(ITEM_INFO + ":" + itemId + ":" + "BASE", TIME_EXPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
+    //分页查询
     public DataGridResult getItemList(int page, int rows) {
         //商品查询列表
         TbItemExample tbItemExample = new TbItemExample();
@@ -69,6 +94,7 @@ public class ItemServiceImpl implements ItemService {
     }
 
     @Override
+    //添加
     public TaotaoResult createItem(TbItem item, String desc, String itemParam) throws Exception {
         //补全item
         long itemId = IDUtils.genItemId();
@@ -88,7 +114,7 @@ public class ItemServiceImpl implements ItemService {
         if (result.getStatus() != 200) {
             throw new Exception();
         }
-
+        //向activemq发送消息
         jmsTemplate.send(destination, new MessageCreator() {
             @Override
             public Message createMessage(Session session) throws JMSException {
@@ -100,7 +126,36 @@ public class ItemServiceImpl implements ItemService {
         return TaotaoResult.ok();
     }
 
-    //添加商品描述富文本框
+    @Override
+    //查询详情
+    public TbItemDesc getItemDescById(long itemId) {
+        //先查询缓存
+        try {
+            String json = jedisClient.get(ITEM_INFO + ":" + itemId + ":" + "DESC");
+            if (StringUtils.isNotBlank(json)) {
+                TbItemDesc itemDesc = JsonUtils.jsonToPojo(json, TbItemDesc.class);
+                return itemDesc;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        //缓存中没有，查数据库
+        TbItemDesc itemDesc = tbItemDescMapper.selectByPrimaryKey(itemId);
+        //添加到换缓存
+        try {
+            //添加到缓存
+            jedisClient.set(ITEM_INFO + ":" + itemId + ":" + "DESC", JsonUtils.objectToJson(itemDesc));
+            //设置过期时间，提高利用率
+            jedisClient.expire(ITEM_INFO + ":" + itemId + ":" + "DESC", TIME_EXPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return itemDesc;
+    }
+
+    /**
+     * 添加商品描述富文本框
+     */
     private TaotaoResult insertItemDesc(Long itemId, String Desc) {
         TbItemDesc tbItemDesc = new TbItemDesc();
         tbItemDesc.setItemId(itemId);
@@ -111,7 +166,9 @@ public class ItemServiceImpl implements ItemService {
         return TaotaoResult.ok();
     }
 
-    //添加规格参数
+    /**
+     * 添加规格参数
+     */
     private TaotaoResult insertItemParamItem(Long itemId, String itemParam) {
         //补全pojo
         TbItemParamItem itemParamItem = new TbItemParamItem();
