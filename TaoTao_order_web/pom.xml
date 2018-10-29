@@ -38,7 +38,6 @@
             <artifactId>TaoTao_sso_interface</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>

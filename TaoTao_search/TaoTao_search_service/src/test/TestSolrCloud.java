@@ -1,6 +1,5 @@
 import org.apache.solr.client.solrj.impl.CloudSolrClient;
 import org.apache.solr.common.SolrInputDocument;
-import org.junit.Test;
 
 /**
  * 2 * @Author: 睿
@@ -8,7 +7,7 @@ import org.junit.Test;
  * 4
  */
 public class TestSolrCloud {
-    @Test
+
     public void testSolrCloudAddDocument() throws Exception {
         //创建一个CloudSolrServer,构造方法中指定zookeeper的地址列表
         /* **CloudSolrServer cloudSolrServer = new CloudSolrServer("120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184");*/

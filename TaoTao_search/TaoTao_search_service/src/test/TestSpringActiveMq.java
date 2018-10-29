@@ -1,4 +1,3 @@
-import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -8,7 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 4
  */
 public class TestSpringActiveMq {
-    @Test
+
     public void testSpringActiveMq()throws Exception{
         ApplicationContext applicationContext=new ClassPathXmlApplicationContext("classpath:spring/applicationContext-Activemq.xml");
         //等待

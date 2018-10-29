@@ -33,10 +33,12 @@
     <div class="mc">
         <form id="personRegForm" method="post" onsubmit="return false;">
             <div class="form" onselectstart="return false;">
+
                 <div class="item" id="select-regName">
                     <span class="label"><b class="ftx04">*</b>用户名：</span>
 
-                    <div class="fl item-ifo">
+                    <div class="fl item-ifo" id="div-1">
+
                         <div class="o-intelligent-regName">
                             <input type="text" id="regName" name="username" class="text" tabindex="1" autoComplete="off"
                                    onpaste="return false;"
@@ -49,6 +51,7 @@
                             <label id="regName_error" class="hide"></label>
                         </div>
                     </div>
+
                 </div>
                 <div id="o-password">
                     <div class="item">
@@ -113,6 +116,7 @@
         </form>
     </div>
     <script type="text/javascript">
+
         var REGISTER = {
             param: {
                 //单点登录系统的url
@@ -121,6 +125,7 @@
             inputcheck: function () {
                 //不能为空检查
                 if ($("#regName").val() == "") {
+
                     alert("用户名不能为空");
                     $("#regName").focus();
                     return false;
