@@ -15,6 +15,7 @@
         <module>TaoTao_sso_interface</module>
         <module>TaoTao_sso_service</module>
     </modules>
+
     <dependencies>
         <dependency>
             <groupId>com.rui</groupId>
