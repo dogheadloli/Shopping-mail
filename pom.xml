@@ -46,7 +46,7 @@
         <commons-logging.version>1.2</commons-logging.version>
         <pagehelper.version>5.1.4</pagehelper.version>
         <jsqlparser.version>0.9.1</jsqlparser.version>
-        <commons-fileupload.version>1.3.1</commons-fileupload.version>
+        <commons-fileupload.version>1.3.3</commons-fileupload.version>
     </properties>
 
     <dependencyManagement>
