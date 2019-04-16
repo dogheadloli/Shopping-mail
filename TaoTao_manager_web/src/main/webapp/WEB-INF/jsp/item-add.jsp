@@ -41,6 +41,17 @@
                     <input class="easyui-textbox" type="text" name="barcode" data-options="validType:'length[1,30]'"/>
                 </td>
             </tr>
+
+            <tr>
+                <td>下拉框:</td>
+                <td>
+                <select class="form-control" id="numbers">
+                   <option value="1">北京</option>
+                   <option value="2" selected>上海</option>
+                </select>
+                </td>
+            </tr>
+
             <tr>
                 <td>商品图片:</td>
                 <td>
