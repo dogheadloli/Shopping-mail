@@ -4,13 +4,6 @@ import java.util.Random;
 
 /**
  * 各种id生成策略
- * <p>Title: IDUtils</p>
- * <p>Description: </p>
- * <p>Company: www.itcast.com</p>
- *
- * @author 入云龙
- * @version 1.0
- * @date 2015年7月22日下午2:32:10
  */
 public class IDUtils {
 
