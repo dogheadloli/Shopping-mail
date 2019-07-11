@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:rabbit="http://www.springframework.org/schema/rabbit"
+       xsi:schemaLocation="http://www.springframework.org/schema/rabbit
+   http://www.springframework.org/schema/rabbit/spring-rabbit-1.4.xsd
+   http://www.springframework.org/schema/beans
+   http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+
+    <!-- 定义RabbitMQ的连接工厂 -->
+    <rabbit:connection-factory id="connectionFactory"
+                               host="${rabbitmq.host}" port="${rabbitmq.port}" username="${user.name}"
+                               password="${user.password}" />
+
+    <!-- MQ的管理，包括队列、交换器等 -->
+    <rabbit:admin connection-factory="connectionFactory"/>
+
+    <!-- 定义队列，自动声明 -->
+    <rabbit:queue name="${queue.name}" durable="true" auto-declare="true"/>
+
+    <!--定义消息模板，用于消息的接收和发送-->
+    <rabbit:template id="amqpTemplate"
+                     connection-factory="connectionFactory"
+                     exchange="test_scorpio"
+                     receive-timeout="10000"/>
+
+    <!--设置转换器类型，并与队列进行绑定-->
+    <rabbit:topic-exchange name="test_scorpio" durable="true" auto-delete="false">
+        <rabbit:bindings>
+            <rabbit:binding pattern="scorpio" queue="${queue.name}"/>
+        </rabbit:bindings>
+    </rabbit:topic-exchange>
+
+    <bean id="itemAddListener" class="listener.ItemAddListener"/>
+
+    <rabbit:listener-container connection-factory="connectionFactory" acknowledge="manual">
+        <rabbit:listener ref="itemAddListener" method="onMessage" queue-names="${queue.name}"/>
+    </rabbit:listener-container>
+
+</beans>

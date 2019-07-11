@@ -28,16 +28,16 @@ public class ItemCatController {
     @SuppressWarnings({"rawtypes", "unchecked"})
     @RequestMapping("/list")
     @ResponseBody
-    //如果id为null是使用默认值，也就是parentid为0的分类列表
+    // 如果id为null是使用默认值，也就是parentid为0的分类列表
     public List getItemCategoryList(@RequestParam(value = "id", defaultValue = "0") Long parentId) throws Exception {
         List catList = new ArrayList();
-        //查询数据库
+        // 查询数据库
         List<TbItemCat> list = itemCatService.getItemCatList(parentId);
         for (TbItemCat tbItemCat : list) {
             Map node = new HashMap<>();
             node.put("id", tbItemCat.getId());
             node.put("text", tbItemCat.getName());
-            //如果是父节点的话就设置成关闭状态，如果是叶子节点就是open状态
+            // 如果是父节点的话就设置成关闭状态，如果是叶子节点就是open状态
             node.put("state", tbItemCat.getIsParent() ? "closed" : "open");
             catList.add(node);
         }

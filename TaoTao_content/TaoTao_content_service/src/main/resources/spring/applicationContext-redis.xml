@@ -6,11 +6,14 @@ http://www.springframework.org/schema/beans/spring-beans.xsd
 http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:properties/*.properties" />
+
     <context:annotation-config/>
      <!--redis单机版-->
      <bean id="jedisPool" class="redis.clients.jedis.JedisPool">
-         <constructor-arg name="host" value="120.78.88.198"/>
-         <constructor-arg name="port" value="6379"/>
+         <constructor-arg name="host" value="${redis.host}"/>
+         <constructor-arg name="port" value="${redis.port}"/>
      </bean>
 
      <bean id="jedisClientPool" class="jedis.JedisClientPool"/>

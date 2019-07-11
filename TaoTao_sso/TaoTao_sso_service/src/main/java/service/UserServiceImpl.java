@@ -37,21 +37,21 @@ public class UserServiceImpl implements UserService {
     public TaotaoResult checkData(String data, int type) {
         TbUserExample example = new TbUserExample();
         TbUserExample.Criteria criteria = example.createCriteria();
-        //判断用户名是否可用
+        // 判断用户名是否可用
         if (type == 1) {
             criteria.andUsernameEqualTo(data);
         } else if (type == 2) {
-            //手机
+            // 手机
             criteria.andPhoneEqualTo(data);
         } else if (type == 3) {
-            //邮箱
+            // 邮箱
             criteria.andEmailEqualTo(data);
         } else {
             return TaotaoResult.build(400, "非法数据");
         }
         List<TbUser> list = userMapper.selectByExample(example);
         if (list != null && list.size() > 0) {
-            //查询数据不可用
+            // 查询数据不可用
             return TaotaoResult.ok(false);
         }
         return TaotaoResult.ok(true);
@@ -59,7 +59,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public TaotaoResult register(TbUser user) {
-        //检查数据有效性
+        // 检查数据有效性
         if (StringUtils.isBlank(user.getUsername())) {
             return TaotaoResult.build(400, "用户名不能为空");
         }
@@ -82,20 +82,20 @@ public class UserServiceImpl implements UserService {
                 return TaotaoResult.build(400, "邮箱不能重复");
             }
         }
-        //补全pojo属性
+        // 补全pojo属性
         user.setCreated(new Date());
         user.setUpdated(new Date());
-        //密码加密
+        // 密码加密
         String md5pass = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         user.setPassword(md5pass);
-        //插入数据
+        // 插入数据
         userMapper.insert(user);
         return TaotaoResult.ok();
     }
 
     @Override
     public TaotaoResult longin(String username, String password) {
-        //查数据库判断密码是否正确
+        // 查数据库判断密码是否正确
         TbUserExample example = new TbUserExample();
         TbUserExample.Criteria criteria = example.createCriteria();
         criteria.andUsernameEqualTo(username);
@@ -108,9 +108,9 @@ public class UserServiceImpl implements UserService {
                 .equals(user.getPassword())) {
             return TaotaoResult.build(400, "用户名或密码不正确");
         }
-        //生成token，使用uuid
+        // 生成token，使用uuid
         String token = UUID.randomUUID().toString();
-        //保存到redis,key是token，设置过期时间
+        // 保存到redis,key是token，设置过期时间
         user.setPassword(null);
         jedisClient.set(USER_SESSION + ":" + token, JsonUtils.objectToJson(user));
         jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
@@ -123,9 +123,9 @@ public class UserServiceImpl implements UserService {
         if (StringUtils.isBlank(json)) {
             return TaotaoResult.build(400, "用户登录已经过期");
         }
-        //重置过期时间
+        // 重置过期时间
         jedisClient.expire(USER_SESSION + ":" + token, SESSION_EXPIRE);
-        //把json装换成user对象
+        // 把json装换成user对象
         TbUser user = JsonUtils.jsonToPojo(json, TbUser.class);
         return TaotaoResult.ok(user);
     }

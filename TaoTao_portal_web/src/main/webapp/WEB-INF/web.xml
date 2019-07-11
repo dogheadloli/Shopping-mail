@@ -35,7 +35,7 @@
         <!-- 设置springmvc配置文件路径 -->
         <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:spring/spring-mvc2.xml</param-value>
+            <param-value>classpath:spring/spring-mvc-portal-web.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>

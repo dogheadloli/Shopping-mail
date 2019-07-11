@@ -27,16 +27,16 @@ public class ItemAddMessageListener implements MessageListener {
 
     @Override
     public void onMessage(Message message) {
-        //从消息总取商品id
+        // 从消息总取商品id
         try {
             TextMessage textMessage = (TextMessage) message;
             long itemId = Long.parseLong(textMessage.getText());
-            //根据id查数据库，取商品信息
+            // 根据id查数据库，取商品信息
             Thread.sleep(1000);
             SearchItem searchItem = searchItemMapper.getItemById(itemId);
-            //创建文档对象
+            // 创建文档对象
             SolrInputDocument document = new SolrInputDocument();
-            //向文档对象中添加域
+            // 向文档对象中添加域
             document.addField("id", searchItem.getId());
             document.addField("item_title", searchItem.getTitle());
             document.addField("item_sell_point", searchItem.getSell_point());
@@ -44,9 +44,9 @@ public class ItemAddMessageListener implements MessageListener {
             document.addField("item_image", searchItem.getImage());
             document.addField("item_category_name", searchItem.getCategory_name());
             document.addField("item_desc", searchItem.getItem_desc());
-            //把文件写入索引库
+            // 把文件写入索引库
             httpSolrClient.add(document);
-            //提交
+            // 提交
             httpSolrClient.commit();
         } catch (JMSException e) {
             e.printStackTrace();

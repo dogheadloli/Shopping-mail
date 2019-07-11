@@ -27,9 +27,9 @@ public class SearchItemServiceImpl implements SearchItemService {
     @Override
     public TaotaoResult importItemsToIndex() {
         try {
-            //查询商品数据
+            // 查询商品数据
             List<SearchItem> itemList = searchItemMapper.getItemList();
-            //遍历商品数据添加到索引库
+            // 遍历商品数据添加到索引库
             for (SearchItem searchItem : itemList) {
                 SolrInputDocument document = new SolrInputDocument();
                 document.addField("id", searchItem.getId());
@@ -40,7 +40,7 @@ public class SearchItemServiceImpl implements SearchItemService {
                 document.addField("item_category_name", searchItem.getCategory_name());
                 document.addField("item_desc", searchItem.getItem_desc());
                 httpSolrClient.add(document);
-                //提交
+                // 提交
                 httpSolrClient.commit();
             }
         } catch (Exception e) {

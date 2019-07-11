@@ -6,16 +6,27 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TaoTao_common" />
-        <module name="TaoTao_content_interface" />
-        <module name="TaoTao_content_service" />
+        <module name="TaoTao_order_web" />
         <module name="TaoTao_interface" />
         <module name="TaoTao_manager_web" />
-        <module name="TaoTao_mapper" />
-        <module name="TaoTao_pojo" />
-        <module name="TaoTao_portal_web" />
         <module name="TaoTao_rest" />
+        <module name="TaoTao_order_service" />
+        <module name="TaoTao_portal_web" />
+        <module name="TaoTao_pojo" />
+        <module name="TaoTao_search_web" />
+        <module name="TaoTao_content_service" />
+        <module name="TaoTao_cart_web" />
+        <module name="TaoTao_sso_service" />
+        <module name="TaoTao_search_interface" />
+        <module name="TaoTao_sso_interface" />
+        <module name="TaoTao_content_interface" />
+        <module name="TaoTao_sso_web" />
+        <module name="TaoTao_order_interface" />
+        <module name="TaoTao_search_service" />
         <module name="TaoTao_service" />
+        <module name="TaoTao_item_web" />
+        <module name="TaoTao_common" />
+        <module name="TaoTao_mapper" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>

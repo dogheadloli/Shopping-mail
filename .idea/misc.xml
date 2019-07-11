@@ -11,14 +11,22 @@
     </session>
   </component>
   <component name="FrameworkDetectionExcludesConfiguration">
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_cart_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_content/TaoTao_content_service" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_item_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager/TaoTao_service" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager/TaoTao_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_manager_web" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_order/TaoTao_order_service" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_order_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_portal" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_portal_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_rest" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_search/TaoTao_search_service" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_search_web" />
     <file type="web" url="file://$PROJECT_DIR$/TaoTao_service" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_sso/TaoTao_sso_service" />
+    <file type="web" url="file://$PROJECT_DIR$/TaoTao_sso_web" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">
@@ -36,7 +44,7 @@
       </set>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" project-jdk-name="9.0" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_9" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

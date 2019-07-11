@@ -34,23 +34,23 @@ public class OrderCartController {
 
     @RequestMapping("/order/order-cart")
     public String showOrderCart(HttpServletRequest request) {
-        //必须是登录状态
-        //取用户id
+        // 必须是登录状态
+        // 取用户id
         TbUser user = (TbUser) request.getAttribute("user");
-        //根据用户信息取收货地址列表
-        //传递给页面
-        //从cookie取购物车
+        // 根据用户信息取收货地址列表
+        // 传递给页面
+        // 从cookie取购物车
         List<TbItem> cartList = getCartItemList(request);
         request.setAttribute("cartList", cartList);
-        //返回逻辑视图
+        // 返回逻辑视图
         return "order-cart";
     }
 
     private List<TbItem> getCartItemList(HttpServletRequest request) {
-        //从cookie取商品列表
+        // 从cookie取商品列表
         String json = CookieUtils.getCookieValue(request, CART_KEY, true);
         if (StringUtils.isBlank(json)) {
-            //没有内容
+            // 没有内容
             return new ArrayList<>();
         }
         List<TbItem> list = JsonUtils.jsonToList(json, TbItem.class);
@@ -62,9 +62,9 @@ public class OrderCartController {
      */
     @RequestMapping(value = "/order/create", method = RequestMethod.POST)
     public String createOrder(OrderInfo orderInfo, Model model) {
-        //生成订单
+        // 生成订单
         TaotaoResult result = orderService.createOrder(orderInfo);
-        //返回逻辑视图
+        // 返回逻辑视图
         model.addAttribute("orderId", result.getData().toString());
         model.addAttribute("payment", orderInfo.getPayment());
         DateTime dateTime = new DateTime();

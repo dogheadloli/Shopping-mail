@@ -21,13 +21,13 @@ public class ItemParamServiceImpl implements ItemParamService {
     private TbItemParamMapper tbItemParamMapper;
 
     @Override
-    //查询模板
+    // 查询模板
     public TaotaoResult getItemParamByCid(Long cid) {
         TbItemParamExample tbItemParamExample = new TbItemParamExample();
         TbItemParamExample.Criteria criteria = tbItemParamExample.createCriteria();
         criteria.andItemCatIdEqualTo(cid);
         List<TbItemParam> list = tbItemParamMapper.selectByExampleWithBLOBs(tbItemParamExample);
-        //判断是否有结果
+        // 判断是否有结果
         if (list != null && list.size() > 0) {
             return TaotaoResult.ok(list.get(0));
         } else {
@@ -36,12 +36,12 @@ public class ItemParamServiceImpl implements ItemParamService {
     }
 
     @Override
-    //添加模板
+    // 添加模板
     public TaotaoResult insertItemParamt(TbItemParam itemParam) {
         //补全pojo
         itemParam.setCreated(new Date());
         itemParam.setUpdated(new Date());
-        //插入到表中
+        // 插入到表中
         tbItemParamMapper.insert(itemParam);
         return TaotaoResult.ok();
     }

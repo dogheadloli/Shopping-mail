@@ -21,12 +21,12 @@ public class ItemController {
     private ItemService itemService;
 
     @RequestMapping("/item/{itemId}")
-    //查询商品详情
+    // 查询商品详情
     public String showItem(@PathVariable Long itemId, Model model) {
-        //取基本信息
+        // 取基本信息
         TbItem tbItem = itemService.getItemById(itemId);
         Item item = new Item(tbItem);
-        //取商品详情
+        // 取商品详情
         TbItemDesc itemDesc = itemService.getItemDescById(itemId);
         model.addAttribute("item", item);
         model.addAttribute("itemDesc", itemDesc);

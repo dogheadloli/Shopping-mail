@@ -31,7 +31,7 @@ public class ItemParamController {
     @RequestMapping("/save/{cid}")
     @ResponseBody
     public TaotaoResult insertItemParam(@PathVariable long cid, String paramData) {
-        //创建pojo
+        // 创建pojo
         TbItemParam itemParam = new TbItemParam();
         itemParam.setItemCatId(cid);
         itemParam.setParamData(paramData);

@@ -39,20 +39,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public TaotaoResult createOrder(OrderInfo orderInfo) {
-        //生成订单号,使用redis的incr
+        // 生成订单号,使用redis的incr
         if (!jedisClient.exists(ORDER_ID_GEN)) {
             jedisClient.set(ORDER_ID_GEN, ORDER_ID_BEGIN_VALUE);
         }
         String orderId = jedisClient.incr(ORDER_ID_GEN).toString();
-        //补全属性
+        // 补全属性
         orderInfo.setOrderId(orderId);
         orderInfo.setPostFee("0");
         orderInfo.setStatus(1);
         orderInfo.setCreateTime(new Date());
         orderInfo.setUpdateTime(new Date());
-        //向订单表插入
+        // 向订单表插入
         orderMapper.insert(orderInfo);
-        //向订单明细插入
+        // 向订单明细插入
         List<TbOrderItem> orderItems = orderInfo.getOrderItems();
         for (TbOrderItem orderItem : orderItems) {
             String oid = jedisClient.incr(ORDER_ITEM_ID_GEN_KEY).toString();
@@ -61,14 +61,14 @@ public class OrderServiceImpl implements OrderService {
 
             orderItemMapper.insert(orderItem);
         }
-        //向订单物流表插入
+        // 向订单物流表插入
         TbOrderShipping orderShipping = orderInfo.getOrderShipping();
         orderShipping.setOrderId(orderId);
         orderShipping.setCreated(new Date());
         orderShipping.setUpdated(new Date());
 
         orderShippingMapper.insert(orderShipping);
-        //返回订单号
+        // 返回订单号
         return TaotaoResult.ok(orderId);
     }
 }

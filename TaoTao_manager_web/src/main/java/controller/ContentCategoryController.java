@@ -33,7 +33,7 @@ public class ContentCategoryController {
             Map node = new HashMap<>();
             node.put("id", tbContentCategory.getId());
             node.put("text", tbContentCategory.getName());
-            //如果是父节点的话就设置成关闭状态，如果是叶子节点就是open状态
+            // 如果是父节点的话就设置成关闭状态，如果是叶子节点就是open状态
             node.put("state", tbContentCategory.getIsParent() ? "closed" : "open");
             catList.add(node);
         }

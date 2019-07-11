@@ -7,7 +7,7 @@ import javax.jms.TextMessage;
  * 3 * @Date: 2018/9/11 0011 17:50
  * 4    接收activemq发送的消息
  */
-public class MyMessageListener implements MessageListener {
+/*public class MyMessageListener implements MessageListener {
     @Override
     public void onMessage(Message message) {
         try {
@@ -19,4 +19,4 @@ public class MyMessageListener implements MessageListener {
             e.printStackTrace();
         }
     }
-}
+}*/

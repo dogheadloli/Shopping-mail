@@ -42,12 +42,12 @@ public class PictureController {
     public String pictureUpload(MultipartFile uploadFile) throws IOException {
         Map resultMap = new HashMap();
         try {
-            //生成新文件名
-            //取原始文件名
+            // 生成新文件名
+            // 取原始文件名
             String oldName = uploadFile.getOriginalFilename();
-            //生成新名字
+            // 生成新名字
             String newName = IDUtils.genImageName() + oldName.substring(oldName.lastIndexOf("."));
-            //图片上传
+            // 图片上传
             String imagePath = new DateTime().toString("/yyyy/MM/dd");
             boolean result = FtpUtil.uploadFile(FTP_ADDRESS, FTP_PORT, FTP_USERNAME, FTP_PASSWORD, FTP_BASEPATH,
                     imagePath, newName, uploadFile.getInputStream());

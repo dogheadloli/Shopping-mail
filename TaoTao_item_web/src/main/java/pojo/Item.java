@@ -32,7 +32,7 @@ public class Item extends TbItem {
         this.setCreated(tbItem.getCreated());
 
         this.setUpdated(tbItem.getUpdated());
-        //初始化属性
+        // 初始化属性
     }
 
     public String[] getImages() {

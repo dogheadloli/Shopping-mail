@@ -6,6 +6,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 3 * @Date: 2018/9/11 0011 19:40
  * 4
  */
+/*
 public class TestSpringActiveMq {
 
     public void testSpringActiveMq()throws Exception{
@@ -15,3 +16,4 @@ public class TestSpringActiveMq {
     }
 
 }
+*/

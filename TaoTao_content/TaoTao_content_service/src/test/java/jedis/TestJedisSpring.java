@@ -9,6 +9,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * 3 * @Date: 2018/9/1 0001 19:49
  * 4
  */
+/*
 public class TestJedisSpring {
 
     public void testJedisClientPool() {
@@ -19,7 +20,6 @@ public class TestJedisSpring {
         //使用JedisClient操作redis
         System.out.println(jedisClient.get("key1"));
 
-
-
     }
 }
+*/

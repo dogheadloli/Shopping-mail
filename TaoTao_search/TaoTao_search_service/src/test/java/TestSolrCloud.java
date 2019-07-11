@@ -6,11 +6,14 @@ import org.apache.solr.common.SolrInputDocument;
  * 3 * @Date: 2018/9/8 0008 11:10
  * 4
  */
+/*
 public class TestSolrCloud {
 
     public void testSolrCloudAddDocument() throws Exception {
         //创建一个CloudSolrServer,构造方法中指定zookeeper的地址列表
-        /* **CloudSolrServer cloudSolrServer = new CloudSolrServer("120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184");*/
+        */
+/* **CloudSolrServer cloudSolrServer = new CloudSolrServer("120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184");*//*
+
         CloudSolrClient cloudSolrClient = new CloudSolrClient.Builder().withSocketTimeout(60000).withZkHost("120.78.88.198:2182,120.78.88.198:2183,120.78.88.198:2184").build();
         //设置默认Conllection
         cloudSolrClient.setDefaultCollection("collection2");
@@ -26,3 +29,4 @@ public class TestSolrCloud {
         cloudSolrClient.commit();
     }
 }
+*/

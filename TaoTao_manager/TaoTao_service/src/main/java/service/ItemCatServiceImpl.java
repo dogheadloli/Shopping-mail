@@ -23,15 +23,15 @@ public class ItemCatServiceImpl implements ItemCatService {
     private TbItemCatMapper itemCatMapper;
 
     @Override
-    //根据parentId查询子类
+    // 根据parentId查询子类
     public List<TbItemCat> getItemCatList(Long parentId) {
 
         TbItemCatExample example = new TbItemCatExample();
-        //设置查询条件
+        // 设置查询条件
         Criteria criteria = example.createCriteria();
-        //根据parentid查询子节点
+        // 根据parentid查询子节点
         criteria.andParentIdEqualTo(parentId);
-        //返回子节点列表
+        // 返回子节点列表
         List<TbItemCat> list = itemCatMapper.selectByExample(example);
         return list;
 

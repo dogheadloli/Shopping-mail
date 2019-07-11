@@ -26,17 +26,17 @@ public class SearchDao {
     private HttpSolrClient httpSolrClient;
 
     public SearchResult search(SolrQuery query) throws Exception {
-        //查询
+        // 查询
         QueryResponse response = httpSolrClient.query(query);
-        //取结果
+        // 取结果
         SolrDocumentList solrDocumentList = response.getResults();
-        //总记录数
+        // 总记录数
         long numFound = solrDocumentList.getNumFound();
 
         SearchResult result = new SearchResult();
         result.setRecordCount(numFound);
         List<SearchItem> itemList = new ArrayList<>();
-        //封装结果
+        // 封装结果
         for (SolrDocument solrDocument : solrDocumentList) {
             SearchItem item = new SearchItem();
             item.setCategory_name((String) solrDocument.get("item_category_name"));
@@ -44,7 +44,7 @@ public class SearchDao {
             item.setImage((String) solrDocument.get("item_image"));
             item.setPrice((long) solrDocument.get("item_price"));
             item.setSell_point((String) solrDocument.get("item_sell_point"));
-            //高亮显示
+            // 高亮显示
             Map<String, Map<String, List<String>>> highlingting = response.getHighlighting();
             List<String> list = highlingting.get(solrDocument.get("id")).get("item_title");
             String title = "";

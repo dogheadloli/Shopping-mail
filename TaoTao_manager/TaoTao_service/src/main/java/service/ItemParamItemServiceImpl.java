@@ -23,21 +23,21 @@ public class ItemParamItemServiceImpl implements ItemParamItemService {
 
     @Override
     public String getItemParamByItemId(Long itemId) {
-        //根据商品id查询规格参数
+        // 根据商品id查询规格参数
         TbItemParamItemExample example = new TbItemParamItemExample();
         TbItemParamItemExample.Criteria criteria = example.createCriteria();
         criteria.andItemIdEqualTo(itemId);
         List<TbItemParamItem> list = itemParamItemMapper.selectByExampleWithBLOBs(example);
         if (list != null && list.size() > 0) {
-            //取参数
+            // 取参数
             TbItemParamItem itemParamItem = list.get(0);
             String paramData = itemParamItem.getParamData();
 
-            //把json数据转换成java对象
+            // 把json数据转换成java对象
             List<Map> paramList = JsonUtils.jsonToList(paramData, Map.class);
-            //将参数信息转换成html
+            // 将参数信息转换成html
             StringBuffer sb = new StringBuffer();
-            //sb.append("<div>");
+            // sb.append("<div>");
             sb.append("<table cellpadding=\"0\" cellspacing=\"1\" width=\"100%\" border=\"1\" class=\"Ptable\">\n");
             sb.append("    <tbody>\n");
             for (Map map : paramList) {

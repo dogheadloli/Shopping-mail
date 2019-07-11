@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 加载配置文件 -->
+    <context:property-placeholder location="classpath:properties/*.properties"/>
 
     <!-- 单机版solr的连接 -->
     <bean id="httpSolrClient" class="org.apache.solr.client.solrj.impl.HttpSolrClient">
-        <constructor-arg name="builder" value="http://120.78.88.198:8080/solr/new_core"/>
+        <constructor-arg name="builder" value="${solr.path}"/>
     </bean>
 
     <!--<bean id="cloudSolrBuilder" class="org.apache.solr.client.solrj.impl.CloudSolrClient.Builder"/>

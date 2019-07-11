@@ -15,6 +15,7 @@ import java.util.Set;
  * 3 * @Date: 2018/8/30 0030 19:35
  * 4
  */
+/*
 public class TestJedis {
 
     public void testJedis() {
@@ -62,3 +63,4 @@ public class TestJedis {
 
     }
 }
+*/

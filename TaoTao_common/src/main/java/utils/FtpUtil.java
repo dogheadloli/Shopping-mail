@@ -39,9 +39,9 @@ public class FtpUtil {
                 ftp.disconnect();
                 return result;
             }
-            //切换到上传目录
+            // 切换到上传目录
             if (!ftp.changeWorkingDirectory(basePath + filePath)) {
-                //如果目录不存在创建目录
+                // 如果目录不存在创建目录
                 String[] dirs = filePath.split("/");
                 String tempPath = basePath;
                 for (String dir : dirs) {
@@ -58,9 +58,9 @@ public class FtpUtil {
                     }
                 }
             }
-            //设置上传文件的类型为二进制类型
+            // 设置上传文件的类型为二进制类型
             ftp.setFileType(FTP.BINARY_FILE_TYPE);
-            //上传文件
+            // 上传文件
             if (!ftp.storeFile(filename, input)) {
                 return result;
             }

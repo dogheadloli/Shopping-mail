@@ -36,9 +36,9 @@ public class IndexController {
 
     @RequestMapping("/index")
     public String showIndex(Model model) {
-        //根据cid查询内容列表
+        // 根据cid查询内容列表
         List<TbContent> contentList = contentService.getContentByCid(AD1_CATEGORY_ID);
-        //把列表转换
+        // 把列表转换
         List<AD1Node> ad1Nodes = new ArrayList<>();
         for (TbContent tbContent : contentList) {
             AD1Node node = new AD1Node();
@@ -52,7 +52,7 @@ public class IndexController {
             node.setHref(tbContent.getUrl());
             ad1Nodes.add(node);
         }
-        //转换成json
+        // 转换成json
         String ad1Jaon = JsonUtils.objectToJson(ad1Nodes);
         model.addAttribute("ad1", ad1Jaon);
         return "index";

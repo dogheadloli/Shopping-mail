@@ -28,17 +28,17 @@ public class HtmlGenController {
 
     @RequestMapping("/genhtml")
     @ResponseBody
-    //生成静态界面
+    // 生成静态界面
     public String genHtml() throws IOException, TemplateException {
-        //生成静态界面
+        // 生成静态界面
         Configuration configuration = freeMarkerConfigurer.getConfiguration();
         Template template = configuration.getTemplate("hello.ftl");
         Map data = new HashMap<>();
         data.put("hello", "hello Spring");
-        Writer out = new FileWriter(new File("F:\\logs\\helloSP.txt"));
+        Writer out = new FileWriter(new File("log/helloSP.txt"));
         template.process(data, out);
         out.close();
-        //返回结果
+        // 返回结果
         return "ok";
     }
 }
