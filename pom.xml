@@ -53,7 +53,7 @@
         <solr-solrj.version>7.3.0</solr-solrj.version>
         <zookeeper.version>3.4.14</zookeeper.version>
         <zkclient.version>0.10</zkclient.version>
-        <httpclient.version>4.5.5</httpclient.version>
+        <httpclient.version>4.5.13</httpclient.version>
         <httpcore.version>4.4.8</httpcore.version>
         <activemq.version>5.11.2</activemq.version>
         <rabbitmq.version>3.4.1</rabbitmq.version>
